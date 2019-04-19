@@ -1,0 +1,15 @@
+{
+  "name": "app-template",
+  "version": "0.0.1",
+  "description": "A templates collection",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "template",
+    "front-end"
+  ],
+  "author": "pjshy",
+  "license": "MIT"
+}

@@ -1,0 +1,22 @@
+# deps
+node_modules
+
+# cache
+
+# build
+dist
+
+# log
+*.log
+
+# others
+*.seed
+*.dat
+*.pid
+*.gz
+*.bat
+.idea
+*.iml
+*.swp
+*.swo
+.DS_Store
