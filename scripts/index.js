@@ -40,18 +40,44 @@ function copyFolder (source, target) {
     fs.mkdirSync(target)
   }
 
-  
+  const fileState = fs.statSync(source)
+
+  if (fileState.isDirectory()) {
+    const files = fs.readdirSync(source)
+
+    console.info(files)
+    files.forEach((file) => {
+      const currentSource = path.join(source, file)
+      const currentTarget = path.join(target, file)
+
+      console.info(currentSource, currentTarget)
+
+      if (fs.statSync(currentSource).isDirectory()) {
+        copyFolder(currentSource, currentTarget)
+      } else {
+        fs.writeFileSync(currentTarget, fs.readFileSync(currentSource))
+      }
+    })
+  }
 }
 
 inrequirer.prompt(questions).then((answers) => {
-  const targetPath = process.cwd()
+  const targetPath = path.join(process.cwd(), answers.name)
   const templatePath = path.join(__dirname, '../template')
 
-  const fileState = fs.statSync(targetPath)
-
-  if (fileState.isFile || fileState.isDirectory) {
+  if (fs.existsSync(targetPath)) {
     console.error(`The targer path <${ targetPath }> already exits.`)
     process.exit(1)
   }
 
+  copyFolder(templatePath, targetPath)
+
+  const pkgPath = path.join(targetPath, 'package.json')
+  const templatePkg = require(pkgPath)
+
+  Object.assign(templatePkg, answers)
+
+  fs.writeFileSync(pkgPath, JSON.stringify(templatePkg, null, 2))
+
+  console.info('success!')
 })
