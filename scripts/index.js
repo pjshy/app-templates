@@ -45,12 +45,9 @@ function copyFolder (source, target) {
   if (fileState.isDirectory()) {
     const files = fs.readdirSync(source)
 
-    console.info(files)
     files.forEach((file) => {
       const currentSource = path.join(source, file)
       const currentTarget = path.join(target, file)
-
-      console.info(currentSource, currentTarget)
 
       if (fs.statSync(currentSource).isDirectory()) {
         copyFolder(currentSource, currentTarget)
