@@ -1,18 +1,8 @@
-const semver = require('semver')
 const inrequirer = require('inquirer')
 const path = require('path')
 const fs = require('fs')
 
 const pkg = require('../package.json')
-
-function checkNodeVersion (version, name) {
-  if (!semver.satisfies(process.version, version)) {
-    console.error('The node in your computed is: ' + process.version + '; but Node ' + pkg.engines.node + ' is required by ' + name)
-    process.exit(1)
-  }
-}
-
-// checkNodeVersion(pkg.version, pkg.name)
 
 const questions = [
   {
