@@ -3,13 +3,29 @@
   "version": "0.0.1",
   "description": "A templates collection",
   "main": "index.js",
+  "engines": {
+    "node": ">=6"
+  },
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "release:beta": "standard-version --prerelease beta",
+    "release": "standard-version"
+  },
+  "bin": {
+    "create-template-app": "./bin/cli.js"
   },
   "keywords": [
     "template",
     "front-end"
   ],
   "author": "pjshy",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "standard-version": "^5.0.2"
+  },
+  "dependencies": {
+    "inquirer": "^6.3.1",
+    "semver": "^6.0.0",
+    "yargs": "^13.2.2"
+  }
 }
