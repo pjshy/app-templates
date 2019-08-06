@@ -33,7 +33,7 @@
     "postcss-loader": "3.0.0",
     "react": "16.8.6",
     "react-dom": "16.8.6",
-    "style-loader": "0.23.1",
+    "style-loader": "1.0.0",
     "stylus": "^0.54.5",
     "stylus-loader": "3.0.2",
     "tslint": "5.16.0",
